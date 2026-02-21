@@ -1,7 +1,7 @@
 {
-  "name": "crash-course",
+  "name": "message-board",
   "version": "1.0.0",
-  "description": "a node crash course",
+  "description": "a simple message board application - https://www.theodinproject.com/lessons/node-path-nodejs-mini-message-board",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamshaunjp/node-crash-course.git"
+    "url": "git+https://github.com/Andrew-McCrow/message-board.git"
   },
-  "author": "net ninja",
+  "author": "Andrew McCrow",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iamshaunjp/node-crash-course/issues"
+    "url": "https://github.com/Andrew-McCrow/message-board/issues"
   },
-  "homepage": "https://github.com/iamshaunjp/node-crash-course#readme",
+  "homepage": "https://github.com/Andrew-McCrow/message-board",
   "dependencies": {
     "ejs": "^3.1.2",
     "express": "^4.17.1",

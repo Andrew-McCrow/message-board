@@ -1,6 +1,20 @@
 const express = require("express");
 const path = require("path");
 
+// dummy data
+const messages = [
+  {
+    text: "Hi there!",
+    user: "Amando",
+    added: new Date(),
+  },
+  {
+    text: "Hello World!",
+    user: "Charles",
+    added: new Date(),
+  },
+];
+
 // express app
 const app = express();
 
@@ -15,30 +29,25 @@ app.set("view engine", "ejs");
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
+// middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
-  const blogs = [
-    {
-      title: "Yoshi finds eggs",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "Mario finds stars",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-    {
-      title: "How to defeat bowser",
-      snippet: "Lorem ipsum dolor sit amet consectetur",
-    },
-  ];
-  res.render("index", { title: "Home", blogs });
+  res.render("index", { title: "Home", messages });
 });
 
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
 
-app.get("/blogs/create", (req, res) => {
-  res.render("create", { title: "Create a new blog" });
+app.get("/new", (req, res) => {
+  res.render("form", { title: "Create a new message" });
+});
+
+app.post("/new", (req, res) => {
+  const { text: messageText, username: messageUser } = req.body;
+  messages.push({ text: messageText, user: messageUser, added: new Date() });
+  res.redirect("/");
 });
 
 // 404 page
