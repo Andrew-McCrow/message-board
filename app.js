@@ -1,23 +1,9 @@
 const express = require("express");
 const path = require("path");
 
-// routes
+// import routes
 const indexRouter = require("./routes/index");
 const newRouter = require("./routes/new");
-
-// dummy data
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
 
 // express app
 const app = express();

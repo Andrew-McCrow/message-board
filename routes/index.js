@@ -1,13 +1,11 @@
 const { Router } = require("express");
+const { getMessages, renderAbout, removeMessage } = require("../controllers/indexController");
 
 const indexRouter = Router();
 
-indexRouter.get("/", (req, res) => {
-  res.render("index", { title: "Home", messages });
-});
-
-indexRouter.get("/about", (req, res) => {
-  res.render("about", { title: "About" });
-});
+// homepage and about page routes
+indexRouter.get("/", getMessages);
+indexRouter.get("/about", renderAbout);
+indexRouter.post("/messages/:id/delete", removeMessage);
 
 module.exports = indexRouter;
