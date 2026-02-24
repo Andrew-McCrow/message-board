@@ -1,6 +1,10 @@
 const express = require("express");
 const path = require("path");
 
+// routes
+const indexRouter = require("./routes/index");
+const newRouter = require("./routes/new");
+
 // dummy data
 const messages = [
   {
@@ -32,23 +36,9 @@ app.use(express.static(assetsPath));
 // middleware to parse form data
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Home", messages });
-});
-
-app.get("/about", (req, res) => {
-  res.render("about", { title: "About" });
-});
-
-app.get("/new", (req, res) => {
-  res.render("form", { title: "Create a new message" });
-});
-
-app.post("/new", (req, res) => {
-  const { text: messageText, username: messageUser } = req.body;
-  messages.push({ text: messageText, user: messageUser, added: new Date() });
-  res.redirect("/");
-});
+// routes
+app.use("/", indexRouter);
+app.use("/new", newRouter);
 
 // 404 page
 app.use((req, res) => {
